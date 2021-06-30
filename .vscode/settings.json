@@ -1,0 +1,7 @@
+{
+    "java.dependency.packagePresentation": "flat",
+    "java.dependency.syncWithFolderExplorer": true,
+    "java.project.sourcePaths": [
+        "java"
+    ]
+}

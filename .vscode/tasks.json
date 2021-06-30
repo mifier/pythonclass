@@ -1,0 +1,44 @@
+ {
+	     "version": "2.0.0",
+	     "tasks": [
+			{
+				"type": "shell",
+				"label": "task g++",
+				"command": "D:\\GCC++\\mingw64\\bin\\g++.exe",
+				"args": [
+					"-g",
+					"${file}",
+					"-o",
+					"${fileDirname}\\${fileBasenameNoExtension}.exe"
+				],
+				"options": {
+					"cwd": "D:\\GCC++\\mingw64\\bin"
+				},
+				"problemMatcher": [
+					"$gcc"
+				],
+				"group": "build"
+			},
+			
+			{
+				"type": "cppbuild",
+				"label": "C/C++: cpp.exe build active file",
+				"command": "D:\\GCC++\\mingw64\\bin\\cpp.exe",
+				"args": [
+					"-g",
+					"${file}",
+					"-o",
+					"${fileDirname}\\${fileBasenameNoExtension}.exe"
+				],
+				"options": {
+					"cwd": "D:\\GCC++\\mingw64\\bin"
+				},
+				"problemMatcher": [
+					"$gcc"
+				],
+				"group": "build",
+				"detail": "compiler: D:\\GCC++\\mingw64\\bin\\cpp.exe"
+			}
+		]
+
+}
