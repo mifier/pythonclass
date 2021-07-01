@@ -33,8 +33,8 @@ class Txts:
                     wordDict[word] = 1
                 wordlist = sorted(wordDict.items(),key=lambda item: item[1], reverse=True) # 以word 计数排序，大的在前
 
-            print('file: %s->the most important word: %s' %
-                      (self.txt_namelist[i], wordlist[0]))
+            print('file: %s->the most important word: \'%s\' ,the number is %d' %
+                  (self.txt_namelist[i], wordlist[0][0], wordlist[0][1]))
 
 
 
