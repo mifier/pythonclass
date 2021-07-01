@@ -22,23 +22,40 @@ class Codestatistics:
             if os.path.splitext(i)[1] == '.py':  # 确保是.py
                 self.py_namelist.append(i)
 
-                with open(dirPath+'/'+i,  encoding='ISO-8859-15', mode='r+') as f:
+                with open(dirPath+'/'+i,  encoding='gbk', mode='r+') as f:  # 中文不乱码
                     data = f.read()
                     self.py_list.append(data)
         self.Number_file=len(self.py_list)
 
-    def statistics():
+    def statistics(self):
         for i,data in enumerate(self.py_list):
             List_codeline = data.split("\n")
             for j in List_codeline:
-                if "#" in j:
+                if j.isspace() or j=='':
+                    self.space_num+=1
+                elif '#' in j:
+                    self.comment_num+=1
+                    search1 = re.search('(\w+)', j).span()
+                    search2 = re.search(r'(#)', j).span()
+                    if search1[0]<search2[0]:
+                        self.code_num += 1                  
+                else :
+                    self.code_num+=1
+
+    def print(self):
+        print('the number of code is %d' %
+              (self.code_num + self.space_num + self.comment_num))
+        print('the number of empty is %d' % self.space_num)
+        print('the number of comment is %d' % self.comment_num)
+
+
+if __name__ == '__main__':
+    codestatistics = Codestatistics('./scripts')
+    codestatistics.statistics()
+    codestatistics.print()
 
 
 
-
-# print('the number of code is %d' % (num_code + num_empty + num_note))
-# print('the number of empty is %d' % num_empty)
-# print('the number of comment is %d' % num_note)
 
 
 
