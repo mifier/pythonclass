@@ -21,7 +21,7 @@ if __name__ == '__main__':
     List_Activationcode = get_Activationcode(Activationcode_num=200)
     for code in List_Activationcode:
         print(code)
-    output = open('./soures/List_Activationcode.txt', 'w+') # 导出到txt
+    output = open('./sources/List_Activationcode.txt', 'w+') # 导出到txt
     for i in range(len(List_Activationcode)):    
         output.write(str(List_Activationcode[i]))
         output.write('\n')

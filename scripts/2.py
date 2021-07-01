@@ -67,7 +67,7 @@ def open_txt(TxtPath):   #获取txt数据
 
 
 if __name__ == '__main__':   
-    TxtPath = './soures/List_Activationcode.txt'
+    TxtPath = './sources/List_Activationcode.txt'
     List_Activationcode = open_txt(TxtPath)  # 获取txt数据
     mysql = MySQL(host='db4free.net',port=3306,user='wangfei',passwd='12345678',db='wangfei_db')
     mysql.create_table("Activationcode_table")

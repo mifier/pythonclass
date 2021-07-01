@@ -10,10 +10,10 @@ def put_num_topright(picture, num):
     font = ImageFont.truetype('C:/Windows/Fonts/Arial.ttf', 200)  # 字体设置,第二个为字体大小
     fillcolor = "#ff0000"  # 颜色设置,  红色
     draw.text((x - 200, 100), str(num), font=font, fill=fillcolor)  # 添加文字
-    img.save('./soures/QQ_Modify.jpg', 'jpeg')  # 保存修改后图片
+    img.save('./sources/QQ_Modify.jpg', 'jpeg')  # 保存修改后图片
 
 
 if __name__ == '__main__':
-    picture = './soures/QQ.jpg'
+    picture = './sources/QQ.jpg'
     num = 6
     put_num_topright(picture, num)

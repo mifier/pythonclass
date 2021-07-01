@@ -12,6 +12,6 @@ def get_word_num(TxtPath):
 
 
 if __name__ == "__main__":
-    word_num=get_word_num('./soures/english.txt')
+    word_num=get_word_num('./sources/english.txt')
     print(word_num)
     
