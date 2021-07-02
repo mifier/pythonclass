@@ -12,6 +12,7 @@ class Codestatistics:
     code_num = 0
     space_num = 0
     comment_num = 0
+
     Number_file=0
     py_namelist=[]
     py_list=[]
@@ -27,7 +28,7 @@ class Codestatistics:
                     self.py_list.append(data)
         self.Number_file=len(self.py_list)
 
-    def statistics(self):
+    def statistic(self):
         for i,data in enumerate(self.py_list):
             List_codeline = data.split("\n")
             for j in List_codeline:
@@ -48,10 +49,9 @@ class Codestatistics:
         print('the number of empty is %d' % self.space_num)
         print('the number of comment is %d' % self.comment_num)
 
-
 if __name__ == '__main__':
     codestatistics = Codestatistics('./scripts')
-    codestatistics.statistics()
+    codestatistics.statistic()
     codestatistics.print()
 
 

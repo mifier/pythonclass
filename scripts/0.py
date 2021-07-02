@@ -3,8 +3,8 @@
 from PIL import Image, ImageDraw, ImageFont
 
 
-def put_num_topright(picture, num):
-    img = Image.open(picture)  
+def put_num_topright_picture(picturepath, num):
+    img = Image.open(picturepath)
     draw = ImageDraw.Draw(img)
     x,_ = img.size  # 获得尺寸
     font = ImageFont.truetype('C:/Windows/Fonts/Arial.ttf', 200)  # 字体设置,第二个为字体大小
@@ -14,6 +14,6 @@ def put_num_topright(picture, num):
 
 
 if __name__ == '__main__':
-    picture = './sources/QQ.jpg'
+    picturepath = './sources/QQ.jpg'
     num = 6
-    put_num_topright(picture, num)
+    put_num_topright_picture(picturepath, num)

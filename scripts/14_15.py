@@ -23,7 +23,7 @@ def save_excel(content_dict,sheetname, excel_name):
     for k, v in content_dict.items():
         #v.insert(0,k)
         if type(v) is not list:
-            v=[v,]
+            v = [v, ]
         v[0:0]=k
         ws.append(v)
        
