@@ -20,7 +20,9 @@ def get_img_list(webUrl):
     return img_List
 
 # 保存网址对应的图片到指定目录
-def listSave(picList, download_dir):
+
+
+def imglist_Save(picList, download_dir):
     i = 1
     for img in picList:
         extend = re.search('([.][jgbp][a-zA-Z]+)', img).group(0)  # 获得扩展名
@@ -42,4 +44,4 @@ def listSave(picList, download_dir):
 if __name__ == '__main__':
     img_List = get_img_list('http://www.netbian.com/weimei/')
     download_dir = './sources/CrawlingPictures/'
-    listSave(img_List, download_dir)
+    imglist_Save(img_List, download_dir)
