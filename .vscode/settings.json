@@ -3,5 +3,6 @@
     "java.dependency.syncWithFolderExplorer": true,
     "java.project.sourcePaths": [
         "java"
-    ]
+    ],
+    "python.languageServer": "Pylance"
 }
