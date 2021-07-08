@@ -43,6 +43,7 @@ def Ring_outlist1(input_list, recount):
 def Ring_outlist2(input_list, recount):
     inputlist = input_list.copy()
     outlist = []
+    
     if type(inputlist).__name__ != 'list':
         raise ValueError("input must be a list!\n")
 
@@ -75,14 +76,15 @@ def create_number_list(numbers):
 
 
 if __name__ == "__main__":
-    numbers = 46
+    numbers = 34
     recount = 4
 
     list = create_number_list(numbers)
-    lifelist1 = Ring_outlist1(list, recount)
-    print(lifelist1)
-    print('the last number: %d \n' % lifelist1[-1])
+    # list.append('sjd')
+    life_list1 = Ring_outlist1(list, recount)
+    print(life_list1)
+    print('the last number: %d \n' % life_list1[-1])
 
-    lifelist2 = Ring_outlist2(list, recount)
-    print(lifelist2)
-    print('the last number: %d \n' % lifelist2[-1])
+    life_list2 = Ring_outlist2(list, recount)
+    print(life_list2)
+    print('the last number: %d \n' % life_list2[-1])
