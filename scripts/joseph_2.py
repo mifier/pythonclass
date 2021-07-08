@@ -83,6 +83,9 @@ if __name__ == "__main__":
     people_objectlist=[People(i) for i in people_list]
     life_list = Ring_outlist(people_objectlist, recount)
 
+    for i in life_list:
+        i.printself()
     a = life_list.pop()
+    print('活到最后的人是：', end='')
     a.printself()
     pass
