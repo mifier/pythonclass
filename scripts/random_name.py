@@ -20,19 +20,19 @@ for studentname in list_studentname:
 
 list_age=[]
 for i in range(peoplenumber):
-    age = random.randint(20,25)
+    age = random.randint(165,195)
     list_age.append(age)
 for age in list_age:
     print(age)
     pass
 
-list_gender=[]
-for i in range(peoplenumber):
-    gender = random.randint(0, 1)
-    if gender==0:
-        list_gender.append('ÄĞ')
-    else:
-        list_gender.append('Å®')
-for gender in list_gender:
-    print(gender)
-    pass
+# list_gender=[]
+# for i in range(peoplenumber):
+#     gender = random.randint(0, 1)
+#     if gender==0:
+#         list_gender.append('ÄĞ')
+#     else:
+#         list_gender.append('Å®')
+# for gender in list_gender:
+#     print(gender)
+#     pass
