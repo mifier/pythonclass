@@ -12,16 +12,17 @@ def load_excellist(filename):
     wb = openpyxl.load_workbook(filename)
     sheet = wb.active
     # 取第一行
-    sheet_key = [i.value for i in list(sheet.rows)[0]]
+    sheet_list = list(sheet.rows)
+    sheet_key = [i.value for i in sheet_list[0]]
     len_key = len(sheet_key)
 
     # 取value 生成字典
-    len_people = len(list(sheet.rows))-1
+    len_people = len(sheet_list)-1
     if(len_people == 0):
         raise "excel中没有数据\n"
 
     sheet_list = []
-    for row in list(sheet.rows)[1:]:
+    for row in sheet_list[1:]:
         dic = {}
         assert len(row) == len_key
         for i, cell in enumerate(row):
@@ -62,7 +63,7 @@ class Joseph_Ring(deque):
             outlist.append(inputlist.popleft())
             
         # outlist.reverse()   # 反转队列 未使用
-        super().extend(outlist)
+        self.extend(outlist)
 
 
 if __name__ == "__main__":
