@@ -21,15 +21,15 @@ def load_excellist(filename):
     if(len_people == 0):
         raise "excel中没有数据\n"
 
-    sheet_list = []
+    out_list = []
     for row in sheet_list[1:]:
         dic = {}
         assert len(row) == len_key
         for i, cell in enumerate(row):
             dic[sheet_key[i]] = cell.value
-        sheet_list.append(dic)
+        out_list.append(dic)
 
-    return sheet_list
+    return out_list
 
 
 class People:
@@ -45,15 +45,14 @@ class People:
 
 class Joseph_Ring(deque):
     def __init__(self, input_list, recount, startpoint=1):
-        inputlist = deque()
-        inputlist.extend(input_list)
+        inputlist = deque(input_list)
         len_inputlist = len(inputlist)
         outlist = []
         # 初始化起点
         if startpoint > 0:
-            inputlist.rotate(startpoint-1)
+            inputlist.rotate(-startpoint+1)
         elif startpoint < 0:
-            inputlist.rotate(startpoint)
+            inputlist.rotate(-startpoint)
         # 获得输出队列
         for i in range(len_inputlist):
             if recount > 0:
@@ -67,14 +66,14 @@ class Joseph_Ring(deque):
 
 
 if __name__ == "__main__":
-    numbers = 34
-    recount = 4
+    numbers = 9
+    recount = 2
     people_list = load_excellist('./sources/people.xlsx')
     people_list = people_list[0:numbers]
 
     people_objectlist = [People(i) for i in people_list]
 
-    Joseph_ring = Joseph_Ring(people_objectlist, recount)
+    Joseph_ring = Joseph_Ring(people_objectlist, recount,startpoint=4)
 
     for i in Joseph_ring:
         i.printself()

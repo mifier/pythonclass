@@ -2,11 +2,11 @@
 
 import csv
 import openpyxl
+from collections import deque
 
-
-# å‘csvæ–‡ä»¶ä¸­å†™å…¥æ•°æ®
+# ÏòcsvÎÄ¼şÖĞĞ´ÈëÊı¾İ
 # with open("./sources/people.csv", 'a') as f:
-#     row = ['æè¶Šå®', '100006', '21', 'ç”·', '186']
+#     row = ['ÀîÔ½±¦', '100006', '21', 'ÄĞ', '186']
 #     write = csv.writer(f)
 #     write.writerow(row)
 
@@ -18,8 +18,28 @@ class Reader(object):
     def __getitem__(self, index):
         return self.reader_list[index]
 
-    def item2dict(self):
-      print(self.reader_list[0])
+    def Joseph_ring(self, recount, startpoint=1):
+      inputlist = deque(self.reader_list)
+      len_inputlist = len(inputlist)
+      outlist = []
+       # ³õÊ¼»¯Æğµã
+      if startpoint > 0:
+          
+        inputlist.rotate(-startpoint+1)
+      elif startpoint < 0:
+            inputlist.rotate(-startpoint)
+        # »ñµÃÊä³ö¶ÓÁĞ
+      for i in range(len_inputlist):
+            if recount > 0:
+                inputlist.rotate(-recount+1)
+            elif recount < 0:
+                inputlist.rotate(-recount)
+            outlist.append(inputlist.popleft())
+
+        # outlist.reverse()   # ·´×ª¶ÓÁĞ Î´Ê¹ÓÃ
+      self.outlist = outlist
+
+
 
 class CSV_reader(Reader):
     def __init__(self,filename):
@@ -45,10 +65,10 @@ class Zip_reader(Reader):
 
 if __name__ == "__main__":
     data=CSV_reader("./sources/people.csv")
-    data.list2dict()
+    
     for i in data:
         print (i)
 
     data1=Excel_reader("./sources/people.xlsx")
-    data1.list2dict()
+    
 

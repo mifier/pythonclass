@@ -1,32 +1,32 @@
 # -*-coding:GBK -*-
 
-# n=1 å¼€å§‹
+# n=1 ¿ªÊ¼
 # def josephus(n, q): return 1 if n == 1 else (josephus(n-1, q) + q-1) % n +1
 
 # print(josephus(46, 4))
 
-# çº¦ç‘Ÿå¤«ç¯ç¬¬äºŒæ¬¡ä½œä¸šè¦æ±‚ï¼š
-# 1ã€ä½¿ç”¨å®¹å™¨ä½œä¸ºè¾“å…¥ï¼Œå®¹å™¨ä¸­æ¯ä¸ªå…ƒç´ éƒ½æ˜¯ä¸ªå¯¹è±¡ï¼Œå¯¹è±¡çš„å±æ€§å’Œæ–¹æ³•è‡ªå®šä¹‰ï¼ŒåŸºç¡€å±æ€§åŒ…æ‹¬å§“åã€å­¦å·ã€‚è¾“å…¥è¦åŒ…æ‹¬é—´éš”ã€èµ·å§‹ä½ç½®ã€‚
+# Ô¼Éª·ò»·µÚ¶ş´Î×÷ÒµÒªÇó£º
+# 1¡¢Ê¹ÓÃÈİÆ÷×÷ÎªÊäÈë£¬ÈİÆ÷ÖĞÃ¿¸öÔªËØ¶¼ÊÇ¸ö¶ÔÏó£¬¶ÔÏóµÄÊôĞÔºÍ·½·¨×Ô¶¨Òå£¬»ù´¡ÊôĞÔ°üÀ¨ĞÕÃû¡¢Ñ§ºÅ¡£ÊäÈëÒª°üÀ¨¼ä¸ô¡¢ÆğÊ¼Î»ÖÃ¡£
 
 
 import openpyxl
 from collections import deque
 
-# å°†excelçš„åˆ—ï¼Œå–å‡ºåç§°ï¼Œå…ƒç´ 
+# ½«excelµÄÁĞ£¬È¡³öÃû³Æ£¬ÔªËØ
 
 
 def load_excellist(filename):
 
     wb = openpyxl.load_workbook(filename)
     sheet = wb.active
-    # å–ç¬¬ä¸€è¡Œ
+    # È¡µÚÒ»ĞĞ
     sheet_key = [i.value for i in list(sheet.rows)[0]]
     len_key = len(sheet_key)
 
-    # å–value ç”Ÿæˆå­—å…¸
+    # È¡value Éú³É×Öµä
     len_people = len(list(sheet.rows))-1
     if(len_people == 0):
-        raise "excelä¸­æ²¡æœ‰æ•°æ®\n"
+        raise "excelÖĞÃ»ÓĞÊı¾İ\n"
 
     sheet_list = []
     for row in list(sheet.rows)[1:]:
@@ -44,12 +44,12 @@ class People:
         for key, value in people_dic.items():
             exec('self.%s = value' % (key), {'self': self, 'value': value})
 
-    def printself(self):   # æ‰“å°è‡ªèº«çš„å±æ€§
+    def printself(self):   # ´òÓ¡×ÔÉíµÄÊôĞÔ
         name_list = [e for e in self.__dict__ if not e.startswith('_')]
         print(['%s:' % i + str(eval('self.%s' %
               i, {'self': self})) for i in name_list])
         
-# é˜Ÿåˆ—å¯ä»¥åŒå‘å–å€¼ï¼Œèµ·ç‚¹å’Œé—´éš”å¯ç”¨è´Ÿæ•°
+# ¶ÓÁĞ¿ÉÒÔË«ÏòÈ¡Öµ£¬ÆğµãºÍ¼ä¸ô¿ÉÓÃ¸ºÊı
 def Ring_outlist(input_list, recount, startpoint=1):
 
     inputlist = deque()
@@ -57,12 +57,12 @@ def Ring_outlist(input_list, recount, startpoint=1):
     len_inputlist = len(inputlist)
     outlist = []
 
-    # åˆå§‹åŒ–èµ·ç‚¹
+    # ³õÊ¼»¯Æğµã
     if startpoint > 0:
         inputlist.rotate(startpoint-1)
     elif startpoint < 0:
         inputlist.rotate(startpoint)
-    # è·å¾—è¾“å‡ºé˜Ÿåˆ—
+    # »ñµÃÊä³ö¶ÓÁĞ
     for i in range(len_inputlist):
         if recount > 0:
           inputlist.rotate(-recount+1)
@@ -75,8 +75,8 @@ def Ring_outlist(input_list, recount, startpoint=1):
 
 
 if __name__ == "__main__":
-    numbers = 34
-    recount = 4
+    numbers = 9
+    recount = 2
 
     people_list = load_excellist('./sources/people.xlsx')
     people_list = people_list[0:numbers]
@@ -86,6 +86,6 @@ if __name__ == "__main__":
     for i in life_list:
         i.printself()
     a = life_list.pop()
-    print('æ´»åˆ°æœ€åçš„äººæ˜¯ï¼š', end='')
+    print('»îµ½×îºóµÄÈËÊÇ£º', end='')
     a.printself()
     pass
